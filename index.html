@@ -1,5 +1,4 @@
 <!DOCTYPE html>
-<!-- Ajout de overflow-x-hidden sur la balise html pour bloquer le défilement horizontal sur iOS/Android -->
 <html lang="fr" class="scroll-smooth overflow-x-hidden">
 <head>
     <meta charset="UTF-8">
@@ -41,16 +40,13 @@
     
     <!-- DEBUT CSS (À séparer dans style.css plus tard) -->
     <style>
-        /* Effet d'asphalte (bruit fractal) en background */
+        /* Effet d'asphalte remplacé par ton image */
         .bg-asphalt {
             background-color: #111111;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.15'/%3E%3C/svg%3E");
-        }
-        
-        /* Effet d'asphalte spécifique pour le logo */
-        .logo-bg {
-            background-color: #1a1a1a;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.3'/%3E%3C/svg%3E");
+            background-image: url('./fond-goudron.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
         }
 
         /* Animations et états survolés des cartes services */
@@ -70,13 +66,9 @@
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 bg-transparent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center">
-                <!-- LOGO PneuGo -->
+                <!-- LOGO PneuGo (Remplacé par l'image) -->
                 <a href="#" class="flex-shrink-0 flex items-center group">
-                    <div class="logo-bg relative inline-flex items-center justify-center px-4 py-1.5 border-b-[3px] border-brand-orange shadow-lg transform -skew-x-12 group-hover:scale-105 transition-transform">
-                        <span class="font-heading font-black italic text-2xl md:text-3xl tracking-tighter uppercase transform skew-x-12">
-                            <span class="text-white">Pneu</span><span class="text-brand-orange">Go</span>
-                        </span>
-                    </div>
+                    <img src="./logo.png" alt="Logo PneuGo" class="h-12 md:h-16 w-auto object-contain group-hover:scale-105 transition-transform">
                 </a>
                 
                 <!-- Menu Desktop -->
@@ -113,8 +105,8 @@
         </div>
     </div>
 
-    <!-- Hero Banner (Ajout de overflow-hidden ici pour bloquer la lueur décorative) -->
-    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 bg-asphalt min-h-[80vh] flex items-center overflow-hidden w-full">
+    <!-- Hero Banner -->
+    <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 bg-asphalt min-h-screen flex items-center overflow-hidden w-full">
         <!-- Lueur décorative orange -->
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-orange/10 rounded-full blur-[100px] pointer-events-none"></div>
         
@@ -123,7 +115,7 @@
                 L'Expertise pneumatique <br class="hidden md:block" />
                 <span class="text-brand-orange">Sans Compromis</span>
             </h1>
-            <p class="mt-4 text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10 font-medium">
+            <p class="mt-4 text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10 font-medium drop-shadow-md">
                 Votre partenaire de confiance à Renens pour rouler en toute sécurité, été comme hiver.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
@@ -224,7 +216,7 @@
     </section>
 
     <!-- Section "Pourquoi nous choisir" -->
-    <section id="pourquoi-nous" class="py-24 bg-asphalt border-y border-gray-800">
+    <section id="pourquoi-nous" class="py-24 bg-brand-dark border-y border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center mb-16">
                 <h2 class="text-3xl md:text-5xl font-heading font-black text-white uppercase tracking-tight break-words leading-[1.7] md:leading-tight">
@@ -338,12 +330,9 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
                 <!-- Colonne 1 -->
                 <div>
-                    <a href="#" class="inline-block mb-4">
-                        <div class="logo-bg relative inline-flex items-center justify-center px-3 py-1 border-b-[3px] border-brand-orange transform -skew-x-12">
-                            <span class="font-heading font-black italic text-xl tracking-tighter uppercase transform skew-x-12">
-                                <span class="text-white">Pneu</span><span class="text-brand-orange">Go</span>
-                            </span>
-                        </div>
+                    <!-- LOGO PneuGo Footer (Remplacé par l'image) -->
+                    <a href="#" class="inline-block mb-4 group">
+                        <img src="./logo.png" alt="Logo PneuGo" class="h-12 w-auto object-contain group-hover:scale-105 transition-transform">
                     </a>
                     <p class="text-gray-500 text-sm leading-relaxed mt-4">
                         Votre partenaire de confiance pour l'entretien et le changement de vos pneus à Renens. La sécurité au meilleur prix, toute l'année.

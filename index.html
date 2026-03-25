@@ -67,11 +67,11 @@
 
     <!-- Navbar -->
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 bg-transparent">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center">
-                <!-- LOGO PneuGo (Décalage vers le bas avec translate-y-[30%] pour éviter toute coupure en haut) -->
-                <a href="#" class="flex-shrink-0 relative block w-[180px] md:w-[240px] h-[40px] md:h-[55px] group z-10">
-                    <img src="./logo.png" alt="Logo PneuGo" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[30%] h-[120px] md:h-[180px] w-auto max-w-none object-contain group-hover:scale-105 transition-transform pointer-events-none">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="flex justify-between items-center w-full">
+                <!-- LOGO PneuGo: Boîte stricte avec overflow-hidden pour supprimer le vide transparent et garantir l'alignement à gauche -->
+                <a href="#" class="flex-shrink-0 relative flex items-center justify-center w-[140px] md:w-[200px] h-[35px] md:h-[45px] group z-10 overflow-hidden">
+                    <img src="./logo.png" alt="Logo PneuGo" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[220%] w-auto max-w-none object-contain group-hover:scale-105 transition-transform">
                 </a>
                 
                 <!-- Menu Desktop -->
@@ -79,7 +79,7 @@
                     <a href="#services" class="text-sm font-semibold uppercase tracking-wider hover:text-brand-red transition-colors">Services</a>
                     <a href="#pourquoi-nous" class="text-sm font-semibold uppercase tracking-wider hover:text-brand-red transition-colors">Pourquoi Nous</a>
                     <a href="#contact" class="text-sm font-semibold uppercase tracking-wider hover:text-brand-red transition-colors">Contact</a>
-                    <a href="https://www.pneuscom.ch" target="_blank" class="px-5 py-2 bg-brand-red text-white font-bold rounded hover:bg-red-700 transition-colors uppercase text-sm">
+                    <a href="https://www.pneuscom.ch" target="_blank" class="px-5 py-2.5 bg-brand-red text-white font-bold rounded hover:bg-red-700 transition-colors uppercase text-sm">
                         Commander
                     </a>
                 </div>
@@ -331,9 +331,9 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
                 <!-- Colonne 1 -->
                 <div>
-                    <!-- LOGO PneuGo Footer -->
-                    <a href="#" class="relative block w-[180px] md:w-[240px] h-[40px] md:h-[55px] mb-8 group z-10">
-                        <img src="./logo.png" alt="Logo PneuGo" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-[30%] h-[120px] md:h-[180px] w-auto max-w-none object-contain group-hover:scale-105 transition-transform pointer-events-none">
+                    <!-- LOGO PneuGo Footer: Boîte stricte avec overflow-hidden -->
+                    <a href="#" class="relative flex items-center justify-center w-[140px] md:w-[200px] h-[35px] md:h-[45px] mb-8 group z-10 overflow-hidden">
+                        <img src="./logo.png" alt="Logo PneuGo" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[220%] w-auto max-w-none object-contain group-hover:scale-105 transition-transform">
                     </a>
                     <p class="text-gray-500 text-sm leading-relaxed mt-4">
                         Votre partenaire de confiance pour l'entretien et le changement de vos pneus à Renens. La sécurité au meilleur prix, toute l'année.

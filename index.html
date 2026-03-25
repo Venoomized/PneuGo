@@ -69,9 +69,9 @@
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 bg-transparent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center">
-                <!-- LOGO PneuGo (Agrandissement et décalage top-[60%] pour éviter qu'il ne se coupe en haut au scroll) -->
-                <a href="#" class="flex-shrink-0 relative block w-[180px] md:w-[240px] h-[40px] md:h-[55px] group z-10">
-                    <img src="./logo.png" alt="Logo PneuGo" class="absolute top-[60%] left-1/2 -translate-x-1/2 -translate-y-1/2 h-[120px] md:h-[180px] w-auto max-w-none object-contain group-hover:scale-105 transition-transform pointer-events-none">
+                <!-- LOGO PneuGo (Taille et alignement corrigés pour une barre fine et un logo droit) -->
+                <a href="#" class="flex-shrink-0 relative block w-[140px] md:w-[180px] h-[35px] md:h-[45px] group z-10">
+                    <img src="./logo.png" alt="Logo PneuGo" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] md:w-[260px] max-w-none object-contain group-hover:scale-105 transition-transform pointer-events-none">
                 </a>
                 
                 <!-- Menu Desktop -->
@@ -108,7 +108,7 @@
         </div>
     </div>
 
-    <!-- Hero Banner (Espacements pt-16 et pb-32 conservés) -->
+    <!-- Hero Banner -->
     <section class="relative pt-16 pb-32 lg:pt-48 lg:pb-32 bg-asphalt min-h-screen flex items-center overflow-hidden w-full">
         <!-- Lueur décorative rouge -->
         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-red/10 rounded-full blur-[100px] pointer-events-none"></div>
@@ -310,4 +310,112 @@
                 <!-- Google Maps (Style sombre) -->
                 <div class="h-[500px] bg-brand-gray rounded-2xl overflow-hidden shadow-2xl border border-gray-800 relative group">
                     <iframe 
-                        src="
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2745.289197475727!2d6.589885112105315!3d46.521877460838634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c310fb4e5b3cb%3A0x67894a81454558e6!2sChemin%20du%20Closel%2016%2C%201020%20Renens%2C%20Suisse!5e0!3m2!1sfr!2sch!4v1710439391000!5m2!1sfr!2sch" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        class="absolute inset-0 grayscale contrast-125 opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 ease-in-out">
+                    </iframe>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0a0a0a] border-t border-gray-900 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <!-- Colonne 1 -->
+                <div>
+                    <!-- LOGO PneuGo Footer -->
+                    <a href="#" class="relative block w-[140px] md:w-[180px] h-[35px] md:h-[45px] mb-8 group z-10">
+                        <img src="./logo.png" alt="Logo PneuGo" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[200px] md:w-[260px] max-w-none object-contain group-hover:scale-105 transition-transform pointer-events-none">
+                    </a>
+                    <p class="text-gray-500 text-sm leading-relaxed mt-4">
+                        Votre partenaire de confiance pour l'entretien et le changement de vos pneus à Renens. La sécurité au meilleur prix, toute l'année.
+                    </p>
+                </div>
+                
+                <!-- Colonne 2 -->
+                <div>
+                    <h4 class="text-white font-heading font-bold mb-6 uppercase tracking-widest text-sm">Liens Rapides</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#services" class="text-gray-500 hover:text-brand-red transition-colors">Nos Services</a></li>
+                        <li><a href="https://www.pneuscom.ch" target="_blank" class="text-gray-500 hover:text-brand-red transition-colors">Commander vos pneus en ligne</a></li>
+                        <li><a href="#calendly" class="text-gray-500 hover:text-brand-red transition-colors">Prendre rendez-vous</a></li>
+                        <li><a href="#contact" class="text-gray-500 hover:text-brand-red transition-colors">Nous contacter</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Colonne 3 -->
+                <div>
+                    <h4 class="text-white font-heading font-bold mb-6 uppercase tracking-widest text-sm">Horaires (SFA)</h4>
+                    <ul class="space-y-3 text-gray-500 text-sm">
+                        <li class="flex justify-between border-b border-gray-800 pb-2"><span>Lundi - Jeudi</span> <span>07:30 - 12:00 | 13:30 - 17:30</span></li>
+                        <li class="flex justify-between border-b border-gray-800 pb-2"><span>Vendredi</span> <span>07:30 - 12:00 | 13:30 - 17:00</span></li>
+                        <li class="flex justify-between border-b border-gray-800 pb-2"><span>Samedi</span> <span>08:00 - 12:00</span></li>
+                        <li class="flex justify-between text-brand-red pt-1"><span>Dimanche</span> <span>Fermé</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-900 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
+                <p>&copy; 2026 PneuGo. Tous droits réservés.</p>
+                <p class="mt-2 md:mt-0">Design & Dévelopement sur-mesure</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bouton WhatsApp Fixe (Logo officiel) -->
+    <!-- NOTE: Remplace le lien wa.me par le numéro réel WhatsApp -->
+    <a href="https://wa.me/41216363707" target="_blank" class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-[0_4px_20px_rgba(37,211,102,0.4)] hover:scale-110 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center" aria-label="Contactez-nous sur WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-8 h-8 fill-current">
+            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+        </svg>
+    </a>
+
+    <!-- DEBUT JS (À séparer dans script.js plus tard) -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialisation des icônes Lucide
+            lucide.createIcons();
+
+            // Gestion du Menu Mobile
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileCloseBtn = document.getElementById('mobile-close-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileBtn.addEventListener('click', () => {
+                mobileMenu.classList.remove('translate-x-full');
+            });
+            
+            mobileCloseBtn.addEventListener('click', () => {
+                mobileMenu.classList.add('translate-x-full');
+            });
+            
+            // Fermer le menu mobile lors d'un clic sur un lien
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('translate-x-full');
+                });
+            });
+
+            // Gestion de la Navbar Sticky (Change de fond au scroll)
+            window.addEventListener('scroll', () => {
+                const nav = document.getElementById('navbar');
+                if (window.scrollY > 20) {
+                    nav.classList.add('bg-brand-dark/95', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-gray-800', 'py-2');
+                    nav.classList.remove('bg-transparent', 'py-4');
+                } else {
+                    nav.classList.remove('bg-brand-dark/95', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-gray-800', 'py-2');
+                    nav.classList.add('bg-transparent', 'py-4');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

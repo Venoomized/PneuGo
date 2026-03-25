@@ -66,12 +66,12 @@
 <body class="bg-brand-dark text-white font-sans antialiased overflow-x-hidden w-full relative">
 
     <!-- Navbar -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 bg-transparent">
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 lg:py-5 bg-transparent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
             <div class="flex justify-between items-center w-full">
-                <!-- LOGO PneuGo: Plus de coupure, taille imposante et centrage parfait -->
-                <a href="#" class="flex-shrink-0 relative flex items-center justify-center w-[160px] md:w-[220px] h-[45px] md:h-[65px] group z-10">
-                    <img src="./logo.png" alt="Logo PneuGo" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] md:w-[340px] h-auto max-w-none object-contain group-hover:scale-105 transition-transform">
+                <!-- LOGO PneuGo: Centrage Flexbox parfait, symétrie avec origin-left, taille ajustée via JS au scroll -->
+                <a href="#" class="flex-shrink-0 flex items-center h-[35px] md:h-[50px] transition-all duration-300" id="nav-logo-link">
+                    <img src="./logo.png" alt="Logo PneuGo" id="nav-logo-img" class="h-full w-auto object-contain origin-left scale-[1.3] md:scale-[1.5] transition-all duration-300 hover:opacity-80">
                 </a>
                 
                 <!-- Menu Desktop -->
@@ -331,9 +331,9 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
                 <!-- Colonne 1 -->
                 <div>
-                    <!-- LOGO PneuGo Footer: Plus de coupure, taille imposante et centrage parfait -->
-                    <a href="#" class="relative flex items-center justify-center w-[160px] md:w-[220px] h-[45px] md:h-[65px] mb-8 group z-10">
-                        <img src="./logo.png" alt="Logo PneuGo" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] md:w-[340px] h-auto max-w-none object-contain group-hover:scale-105 transition-transform">
+                    <!-- LOGO PneuGo Footer: Même logique infaillible -->
+                    <a href="#" class="inline-flex items-center h-[40px] md:h-[60px] mb-8 transition-all duration-300 group">
+                        <img src="./logo.png" alt="Logo PneuGo" class="h-full w-auto object-contain origin-left scale-[1.3] md:scale-[1.5] transition-all duration-300 hover:opacity-80">
                     </a>
                     <p class="text-gray-500 text-sm leading-relaxed mt-4">
                         Votre partenaire de confiance pour l'entretien et le changement de vos pneus à Renens. La sécurité au meilleur prix, toute l'année.
@@ -404,15 +404,37 @@
                 });
             });
 
-            // Gestion de la Navbar Sticky (Change de fond au scroll)
+            // Gestion de la Navbar Sticky (Change de fond au scroll ET rétrécit le logo)
             window.addEventListener('scroll', () => {
                 const nav = document.getElementById('navbar');
+                const logoLink = document.getElementById('nav-logo-link');
+                const logoImg = document.getElementById('nav-logo-img');
+                
                 if (window.scrollY > 20) {
+                    // 1. La barre devient noire et fine
                     nav.classList.add('bg-brand-dark/95', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-gray-800', 'py-2');
-                    nav.classList.remove('bg-transparent', 'py-4');
+                    nav.classList.remove('bg-transparent', 'py-4', 'lg:py-5');
+                    
+                    // 2. Le conteneur du logo rétrécit pour rentrer dans la nouvelle barre fine
+                    logoLink.classList.remove('h-[35px]', 'md:h-[50px]');
+                    logoLink.classList.add('h-[25px]', 'md:h-[35px]');
+                    
+                    // 3. On réduit l'échelle de l'image pour qu'elle respire et ne touche pas le haut de ton écran !
+                    logoImg.classList.remove('scale-[1.3]', 'md:scale-[1.5]');
+                    logoImg.classList.add('scale-110', 'md:scale-125');
+                    
                 } else {
+                    // 1. La barre redevient transparente et large
                     nav.classList.remove('bg-brand-dark/95', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-gray-800', 'py-2');
-                    nav.classList.add('bg-transparent', 'py-4');
+                    nav.classList.add('bg-transparent', 'py-4', 'lg:py-5');
+                    
+                    // 2. Le conteneur du logo reprend sa taille imposante
+                    logoLink.classList.remove('h-[25px]', 'md:h-[35px]');
+                    logoLink.classList.add('h-[35px]', 'md:h-[50px]');
+                    
+                    // 3. On redonne l'échelle maximum à l'image
+                    logoImg.classList.remove('scale-110', 'md:scale-125');
+                    logoImg.classList.add('scale-[1.3]', 'md:scale-[1.5]');
                 }
             });
         });

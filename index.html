@@ -69,9 +69,9 @@
     <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 bg-transparent">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center">
-                <!-- LOGO PneuGo (Taille ajustée pour prendre presque toute la barre au scroll) -->
-                <a href="#" class="flex-shrink-0 relative block w-[140px] md:w-[200px] h-[35px] md:h-[45px] group z-10">
-                    <img src="./logo.png" alt="Logo PneuGo" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[230px] md:w-[310px] max-w-none object-contain group-hover:scale-105 transition-transform pointer-events-none">
+                <!-- LOGO PneuGo (Ajusté sur la hauteur pour écraser les marges et affiner la barre) -->
+                <a href="#" class="flex-shrink-0 relative block w-[160px] md:w-[220px] h-[28px] md:h-[36px] group z-10">
+                    <img src="./logo.png" alt="Logo PneuGo" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[90px] md:h-[120px] w-auto max-w-none object-contain group-hover:scale-105 transition-transform pointer-events-none">
                 </a>
                 
                 <!-- Menu Desktop -->
@@ -333,9 +333,9 @@
             <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
                 <!-- Colonne 1 -->
                 <div>
-                    <!-- LOGO PneuGo Footer (Même taille que la navbar) -->
-                    <a href="#" class="relative block w-[140px] md:w-[200px] h-[35px] md:h-[45px] mb-8 group z-10">
-                        <img src="./logo.png" alt="Logo PneuGo" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[230px] md:w-[310px] max-w-none object-contain group-hover:scale-105 transition-transform pointer-events-none">
+                    <!-- LOGO PneuGo Footer -->
+                    <a href="#" class="relative block w-[160px] md:w-[220px] h-[28px] md:h-[36px] mb-8 group z-10">
+                        <img src="./logo.png" alt="Logo PneuGo" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[90px] md:h-[120px] w-auto max-w-none object-contain group-hover:scale-105 transition-transform pointer-events-none">
                     </a>
                     <p class="text-gray-500 text-sm leading-relaxed mt-4">
                         Votre partenaire de confiance pour l'entretien et le changement de vos pneus à Renens. La sécurité au meilleur prix, toute l'année.
@@ -410,10 +410,10 @@
             window.addEventListener('scroll', () => {
                 const nav = document.getElementById('navbar');
                 if (window.scrollY > 20) {
-                    nav.classList.add('bg-brand-dark/95', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-gray-800', 'py-2');
+                    nav.classList.add('bg-brand-dark/95', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-gray-800', 'py-1');
                     nav.classList.remove('bg-transparent', 'py-4');
                 } else {
-                    nav.classList.remove('bg-brand-dark/95', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-gray-800', 'py-2');
+                    nav.classList.remove('bg-brand-dark/95', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-gray-800', 'py-1');
                     nav.classList.add('bg-transparent', 'py-4');
                 }
             });

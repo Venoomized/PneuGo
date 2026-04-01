@@ -133,29 +133,41 @@
                 </a>
             </div>
 
-            <!-- BOITE INFO COURTE AVEC BULLE CLICABLE -->
-            <div class="mt-10 max-w-2xl mx-auto bg-brand-gray border border-gray-800 rounded-xl p-4 md:p-5 text-left shadow-lg">
-                <div class="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            <!-- BOITE INFO PNEUSCOM (DESIGN TYPE CARTE SERVICE) -->
+            <div class="mt-10 max-w-2xl mx-auto bg-brand-gray border border-gray-800 rounded-xl p-6 md:p-8 text-left shadow-lg relative">
+                
+                <!-- Ligne 1 : Bouton (i) + Flèche + Texte indicatif -->
+                <div class="flex items-center mb-6">
+                    <!-- Conteneur du bouton (i) -->
                     <div class="relative">
-                        <!-- Le bouton (i) qui déclenche la bulle -->
-                        <button id="info-toggle-btn" class="w-12 h-12 bg-brand-red/10 hover:bg-brand-red/20 transition-colors cursor-pointer rounded-lg flex items-center justify-center flex-shrink-0 text-brand-red relative z-10">
-                            <i data-lucide="info" class="w-6 h-6 pointer-events-none"></i>
+                        <button id="info-toggle-btn" class="w-14 h-14 bg-brand-red/10 hover:bg-brand-red/20 transition-colors cursor-pointer rounded-lg flex items-center justify-center flex-shrink-0 text-brand-red relative z-10">
+                            <i data-lucide="info" class="w-8 h-8 pointer-events-none"></i>
                         </button>
                         
                         <!-- La bulle cachée -->
-                        <div id="info-bubble" class="hidden absolute top-full left-0 sm:-left-4 mt-4 w-72 md:w-80 bg-[#1a1a1c] border border-gray-700 rounded-xl p-5 shadow-2xl z-50 opacity-0 transition-opacity duration-300">
-                            <!-- Flèche directionnelle -->
-                            <div class="absolute -top-2 left-5 sm:left-9 w-4 h-4 bg-[#1a1a1c] border-t border-l border-gray-700 transform rotate-45"></div>
+                        <div id="info-bubble" class="hidden absolute top-full left-0 mt-3 w-72 md:w-80 bg-[#1a1a1c] border border-gray-700 rounded-xl p-5 shadow-2xl z-50 opacity-0 transition-opacity duration-300">
+                            <!-- Flèche directionnelle de la bulle -->
+                            <div class="absolute -top-2 left-6 w-4 h-4 bg-[#1a1a1c] border-t border-l border-gray-700 transform rotate-45"></div>
                             <p class="text-gray-300 text-sm leading-relaxed relative z-10">
                                 Le délai de livraison étant de 2 à 4 jours, merci de fixer votre rendez-vous de montage <strong class="text-brand-red">directement via WhatsApp</strong> en bas de page. Munissez-vous de votre numéro de commande.<br><br>L'agenda classique est réservé à nos autres services.
                             </p>
                         </div>
                     </div>
-                    <p class="text-gray-400 text-sm md:text-base leading-relaxed">
-                        <strong class="text-white font-heading tracking-wide">Pneus commandés sur pneuscom.ch ?</strong><br>
-                        Cliquez sur le <span class="text-brand-red font-bold">(i)</span> pour savoir comment prendre rendez-vous.
-                    </p>
+
+                    <!-- Flèche et texte à droite du bouton (i) -->
+                    <div class="flex items-center ml-4 text-gray-400 italic text-sm md:text-base">
+                        <i data-lucide="arrow-left" class="w-5 h-5 mr-2 text-brand-red"></i>
+                        <span>Cliquez ici pour avoir plus d'infos</span>
+                    </div>
                 </div>
+
+                <!-- Ligne 2 : Texte principal (Titre et description) -->
+                <!-- MODIFICATION EFFECTUÉE ICI : Ajout de text-center -->
+                <h3 class="text-center text-[15px] sm:text-lg md:text-xl font-heading font-bold text-white mb-2 tracking-normal md:tracking-wide whitespace-nowrap overflow-hidden text-ellipsis sm:whitespace-normal sm:overflow-visible">PNEUS COMMANDÉS SUR PNEUSCOM.CH ?</h3>
+                <p class="text-center text-gray-400 leading-relaxed text-sm md:text-base">
+                    Cliquez sur le bouton vert pour prendre rendez-vous.
+                </p>
+
             </div>
 
         </div>
@@ -401,38 +413,46 @@
         </svg>
     </a>
 
-    <!-- DEBUT JS (À séparer dans script.js plus tard) -->
+    <!-- DEBUT JS -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Initialisation des icônes Lucide
-            lucide.createIcons();
+            // Initialisation des icônes Lucide (Vérification de sécurité ajoutée)
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
 
             // Gestion du Menu Mobile
             const mobileBtn = document.getElementById('mobile-menu-btn');
             const mobileCloseBtn = document.getElementById('mobile-close-btn');
             const mobileMenu = document.getElementById('mobile-menu');
             
-            mobileBtn.addEventListener('click', () => {
-                mobileMenu.classList.remove('translate-x-full');
-            });
+            if (mobileBtn && mobileMenu) {
+                mobileBtn.addEventListener('click', () => {
+                    mobileMenu.classList.remove('translate-x-full');
+                });
+            }
             
-            mobileCloseBtn.addEventListener('click', () => {
-                mobileMenu.classList.add('translate-x-full');
-            });
+            if (mobileCloseBtn && mobileMenu) {
+                mobileCloseBtn.addEventListener('click', () => {
+                    mobileMenu.classList.add('translate-x-full');
+                });
+            }
             
             // Fermer le menu mobile lors d'un clic sur un lien
             document.querySelectorAll('#mobile-menu a').forEach(link => {
                 link.addEventListener('click', () => {
-                    mobileMenu.classList.add('translate-x-full');
+                    if (mobileMenu) mobileMenu.classList.add('translate-x-full');
                 });
             });
 
-            // Gestion de la Navbar Sticky (Change de fond au scroll ET rétrécit le logo)
+            // Gestion de la Navbar Sticky
             window.addEventListener('scroll', () => {
                 const nav = document.getElementById('navbar');
                 const logoLink = document.getElementById('nav-logo-link');
                 const logoImg = document.getElementById('nav-logo-img');
                 
+                if (!nav || !logoLink || !logoImg) return;
+
                 if (window.scrollY > 20) {
                     nav.classList.add('bg-brand-dark/95', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-gray-800', 'py-2');
                     nav.classList.remove('bg-transparent', 'py-4', 'lg:py-5');
@@ -477,41 +497,42 @@
                 });
             });
 
-            // GESTION DE LA BULLE D'INFORMATION (i)
+            // GESTION DE LA BULLE D'INFORMATION (i) - Sécurisée
             const infoBtn = document.getElementById('info-toggle-btn');
             const infoBubble = document.getElementById('info-bubble');
 
-            infoBtn.addEventListener('click', (e) => {
-                e.stopPropagation(); // Empêche le clic de se propager pour ne pas fermer tout de suite
-                
-                if (infoBubble.classList.contains('hidden')) {
-                    // Afficher la bulle
-                    infoBubble.classList.remove('hidden');
-                    // Timeout minimal pour que la transition CSS s'applique
-                    setTimeout(() => {
-                        infoBubble.classList.remove('opacity-0');
-                        infoBubble.classList.add('opacity-100');
-                    }, 10);
-                } else {
-                    // Cacher la bulle
-                    infoBubble.classList.remove('opacity-100');
-                    infoBubble.classList.add('opacity-0');
-                    setTimeout(() => {
-                        infoBubble.classList.add('hidden');
-                    }, 300); // Durée de la transition
-                }
-            });
+            if (infoBtn && infoBubble) {
+                infoBtn.addEventListener('click', (e) => {
+                    e.stopPropagation(); 
+                    
+                    if (infoBubble.classList.contains('hidden')) {
+                        // Afficher
+                        infoBubble.classList.remove('hidden');
+                        setTimeout(() => {
+                            infoBubble.classList.remove('opacity-0');
+                            infoBubble.classList.add('opacity-100');
+                        }, 10);
+                    } else {
+                        // Cacher
+                        infoBubble.classList.remove('opacity-100');
+                        infoBubble.classList.add('opacity-0');
+                        setTimeout(() => {
+                            infoBubble.classList.add('hidden');
+                        }, 300);
+                    }
+                });
 
-            // Fermer la bulle si on clique ailleurs sur la page
-            document.addEventListener('click', (e) => {
-                if (!infoBubble.classList.contains('hidden') && !infoBubble.contains(e.target) && e.target !== infoBtn) {
-                    infoBubble.classList.remove('opacity-100');
-                    infoBubble.classList.add('opacity-0');
-                    setTimeout(() => {
-                        infoBubble.classList.add('hidden');
-                    }, 300);
-                }
-            });
+                // Fermer la bulle si on clique ailleurs
+                document.addEventListener('click', (e) => {
+                    if (!infoBubble.classList.contains('hidden') && !infoBubble.contains(e.target) && e.target !== infoBtn) {
+                        infoBubble.classList.remove('opacity-100');
+                        infoBubble.classList.add('opacity-0');
+                        setTimeout(() => {
+                            infoBubble.classList.add('hidden');
+                        }, 300);
+                    }
+                });
+            }
         });
     </script>
 </body>

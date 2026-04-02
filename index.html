@@ -1,541 +1,550 @@
 <!DOCTYPE html>
 <html lang="fr" class="scroll-smooth overflow-x-hidden">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PneuGo | Votre Garage de Pneus à Renens</title>
-    <meta name="description" content="PneuGo, l'expert de vos pneumatiques à Renens. Vente, pose, géométrie et changement saisonnier.">
-    
-    <!-- Polices Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:ital,wght@0,700;0,900;1,900&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS pour la structure responsive et le design -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Lucide Icons pour des icônes modernes et légères -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-    
-    <!-- DEBUT JS (Configuration Tailwind) -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            red: '#E61C24',    /* Rouge sportif du nouveau logo */
-                            dark: '#111111',   /* Noir asphalte profond */
-                            gray: '#1E1E20',   /* Gris asphalte clair */
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        heading: ['Montserrat', 'sans-serif'],
-                    }
-                }
-            }
-        }
-    </script>
-    
-    <!-- DEBUT CSS (À séparer dans style.css plus tard) -->
-    <style>
-        /* Effet d'asphalte remplacé par ton image AVEC un dégradé pour la lisibilité et le fondu */
-        .bg-asphalt {
-            background-color: #111111;
-            /* Le linear-gradient assombrit l'image pour lire le texte, et fait un fondu total vers le noir (rgba 17,17,17 = #111111) à la fin. Correction de l'erreur sur le rgba. */
-            background-image: 
-                linear-gradient(to bottom, rgba(17, 17, 17, 0.5) 0%, rgba(17, 17, 17, 0.6) 70%, rgba(17, 17, 17, 1) 100%),
-                url('./fond-goudron.jpg');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PneuGo | Votre Garage de Pneus à Renens</title>
+    <meta name="description" content="PneuGo, l'expert de vos pneumatiques à Renens. Vente, pose, géométrie et changement saisonnier.">
+  
+  	<!-- Ligne de validation Google Search Console -->
+    <meta name="google-site-verification" content="VANQsy_nSA3O24dXE46lOBJDyx2obXv90voVmtWNEnc" />
+    
+    <!-- Polices Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:ital,wght@0,700;0,900;1,900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS pour la structure responsive et le design -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons pour des icônes modernes et légères -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- DEBUT JS (Configuration Tailwind) -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            red: '#E61C24',    /* Rouge sportif du nouveau logo */
+                            dark: '#111111',   /* Noir asphalte profond */
+                            gray: '#1E1E20',   /* Gris asphalte clair */
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- DEBUT CSS (À séparer dans style.css plus tard) -->
+    <style>
+        /* Effet d'asphalte remplacé par ton image AVEC un dégradé pour la lisibilité et le fondu */
+        .bg-asphalt {
+            background-color: #111111;
+            /* Le linear-gradient assombrit l'image pour lire le texte, et fait un fondu total vers le noir (rgba 17,17,17 = #111111) à la fin. Correction de l'erreur sur le rgba. */
+            background-image: 
+                linear-gradient(to bottom, rgba(17, 17, 17, 0.5) 0%, rgba(17, 17, 17, 0.6) 70%, rgba(17, 17, 17, 1) 100%),
+                url('./fond-goudron.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
 
-        /* Animations et états survolés des cartes services */
-        .service-card {
-            transition: all 0.3s ease;
-        }
-        .service-card:hover {
-            transform: translateY(-5px);
-            border-color: #E61C24;
-            box-shadow: 0 10px 30px -10px rgba(230, 28, 36, 0.25);
-        }
-    </style>
+        /* Animations et états survolés des cartes services */
+        .service-card {
+            transition: all 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: #E61C24;
+            box-shadow: 0 10px 30px -10px rgba(230, 28, 36, 0.25);
+        }
+    </style>
 </head>
 <body class="bg-brand-dark text-white font-sans antialiased overflow-x-hidden w-full relative">
 
-    <!-- Navbar -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 lg:py-5 bg-transparent">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-            <div class="flex justify-between items-center w-full">
-                <!-- LOGO PneuGo: Centrage Flexbox parfait, symétrie avec origin-left, taille ENCORE PLUS AGRANDIE via classes scale -->
-                <a href="#" class="flex-shrink-0 flex items-center h-[50px] md:h-[75px] transition-all duration-300" id="nav-logo-link">
-                    <img src="./logo.png" alt="Logo PneuGo" id="nav-logo-img" class="h-full w-auto object-contain origin-left scale-[1.7] md:scale-[2.2] transition-all duration-300 hover:opacity-80">
-                </a>
-                
-                <!-- Menu Desktop -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#services" class="text-sm font-semibold uppercase tracking-wider hover:text-brand-red transition-colors">Services</a>
-                    <a href="#pourquoi-nous" class="text-sm font-semibold uppercase tracking-wider hover:text-brand-red transition-colors">Pourquoi Nous</a>
-                    <a href="#contact" class="text-sm font-semibold uppercase tracking-wider hover:text-brand-red transition-colors">Contact</a>
-                    <a href="https://www.pneuscom.ch" target="_blank" class="px-5 py-2.5 bg-brand-red text-white font-bold rounded hover:bg-red-700 transition-colors uppercase text-sm">
-                        Commander
+    <!-- Navbar -->
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-300 py-4 lg:py-5 bg-transparent">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
+            <div class="flex justify-between items-center w-full">
+                <!-- LOGO PneuGo: Centrage Flexbox parfait, symétrie avec origin-left, taille ENCORE PLUS AGRANDIE via classes scale -->
+                <a href="#" class="flex-shrink-0 flex items-center h-[50px] md:h-[75px] transition-all duration-300" id="nav-logo-link">
+                    <img src="./logo.png" alt="Logo PneuGo" id="nav-logo-img" class="h-full w-auto object-contain origin-left scale-[1.7] md:scale-[2.2] transition-all duration-300 hover:opacity-80">
+                </a>
+                
+                <!-- Menu Desktop -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#services" class="text-sm font-semibold uppercase tracking-wider hover:text-brand-red transition-colors">Services</a>
+                    <a href="#pourquoi-nous" class="text-sm font-semibold uppercase tracking-wider hover:text-brand-red transition-colors">Pourquoi Nous</a>
+                    <a href="#contact" class="text-sm font-semibold uppercase tracking-wider hover:text-brand-red transition-colors">Contact</a>
+                    <a href="https://www.pneuscom.ch" target="_blank" class="px-5 py-2.5 bg-brand-red text-white font-bold rounded hover:bg-red-700 transition-colors uppercase text-sm">
+                        Commander
+                    </a>
+                </div>
+
+                <!-- Bouton Menu Mobile -->
+                <button id="mobile-menu-btn" class="md:hidden text-white hover:text-brand-red">
+                    <i data-lucide="menu" class="w-8 h-8"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Menu Mobile (Caché par défaut) -->
+    <div id="mobile-menu" class="fixed inset-0 bg-brand-dark z-50 transform translate-x-full transition-transform duration-300 flex flex-col pt-24 px-6 md:hidden">
+        <button id="mobile-close-btn" class="absolute top-6 right-6 text-white hover:text-brand-red">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+        <div class="flex flex-col space-y-6 text-center">
+            <a href="#services" class="text-xl font-heading font-bold uppercase hover:text-brand-red">Nos Services</a>
+            <a href="#pourquoi-nous" class="text-xl font-heading font-bold uppercase hover:text-brand-red">Pourquoi Nous</a>
+            <a href="#contact" class="text-xl font-heading font-bold uppercase hover:text-brand-red">Contact</a>
+            <hr class="border-gray-800">
+            <a href="https://www.pneuscom.ch" target="_blank" class="px-6 py-4 bg-brand-red text-white font-bold rounded uppercase">Commander vos pneus</a>
+            <a href="https://calendly.com/contact-pneugo/30" target="_blank" class="px-6 py-4 border-2 border-brand-red text-brand-red font-bold rounded uppercase">Prendre Rendez-vous</a>
+        </div>
+    </div>
+
+    <!-- Hero Banner -->
+    <section class="relative pt-16 pb-32 lg:pt-48 lg:pb-32 bg-asphalt min-h-screen flex items-center overflow-hidden w-full">
+        <!-- Lueur décorative rouge -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-red/10 rounded-full blur-[100px] pointer-events-none"></div>
+        
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 w-full">
+            <h1 class="text-4xl md:text-5xl lg:text-7xl font-heading font-black text-white uppercase tracking-tight mb-6 drop-shadow-lg break-words">
+                L'Expertise pneumatique <br class="hidden md:block" />
+                <span class="text-brand-red">Sans Compromis</span>
+            </h1>
+            <p class="mt-4 text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10 font-medium drop-shadow-md">
+                Votre partenaire de confiance à Renens pour rouler en toute sécurité, été comme hiver.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
+                <!-- BOUTON 1 : COMMANDER -->
+                <a href="https://www.pneuscom.ch" target="_blank" class="inline-flex items-center justify-center px-8 py-4 text-sm md:text-base font-bold text-white bg-brand-red rounded hover:bg-red-700 hover:scale-105 transition-all uppercase tracking-wide">
+                    <i data-lucide="shopping-cart" class="w-5 h-5 mr-2"></i>
+                    Commander vos pneus
+                </a>
+                <!-- BOUTON 2 : RENDEZ-VOUS -->
+                <a href="https://calendly.com/contact-pneugo/30" target="_blank" class="inline-flex items-center justify-center px-8 py-4 text-sm md:text-base font-bold text-white bg-brand-dark/50 backdrop-blur-sm border-2 border-brand-red rounded hover:bg-brand-red hover:text-white hover:scale-105 transition-all uppercase tracking-wide">
+                    <i data-lucide="calendar" class="w-5 h-5 mr-2"></i>
+                    Prendre rendez-vous
+                </a>
+            </div>
+
+            <!-- BOITE INFO PNEUSCOM (DESIGN TYPE CARTE SERVICE) -->
+            <div class="mt-10 max-w-2xl mx-auto bg-brand-gray border border-gray-800 rounded-xl p-6 md:p-8 text-left shadow-lg relative">
+                
+                <!-- Ligne 1 : Bouton (i) + Flèche + Texte indicatif -->
+                <div class="flex items-center mb-6">
+                    <!-- Conteneur du bouton (i) -->
+                    <div class="relative">
+                        <button id="info-toggle-btn" class="w-14 h-14 bg-brand-red/10 hover:bg-brand-red/20 transition-colors cursor-pointer rounded-lg flex items-center justify-center flex-shrink-0 text-brand-red relative z-10">
+                            <i data-lucide="info" class="w-8 h-8 pointer-events-none"></i>
+                        </button>
+                        
+                        <!-- La bulle cachée -->
+                        <div id="info-bubble" class="hidden absolute top-full left-0 mt-3 w-72 md:w-80 bg-[#1a1a1c] border border-gray-700 rounded-xl p-5 shadow-2xl z-50 opacity-0 transition-opacity duration-300">
+                            <!-- Flèche directionnelle de la bulle -->
+                            <div class="absolute -top-2 left-6 w-4 h-4 bg-[#1a1a1c] border-t border-l border-gray-700 transform rotate-45"></div>
+                            <p class="text-gray-300 text-sm leading-relaxed relative z-10">
+                                Le délai de livraison étant de 2 à 4 jours, merci de fixer votre rendez-vous de montage <strong class="text-brand-red">directement via WhatsApp</strong> en bas de page. Munissez-vous de votre numéro de commande.<br><br>L'agenda classique est réservé à nos autres services.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Flèche et texte à droite du bouton (i) -->
+                    <div class="flex items-center ml-4 text-gray-400 italic text-sm md:text-base">
+                        <i data-lucide="arrow-left" class="w-5 h-5 mr-2 text-brand-red"></i>
+                        <span>Cliquez ici pour avoir plus d'infos !</span>
+                    </div>
+                </div>
+
+                <!-- Ligne 2 : Texte principal (Titre et description) -->
+                <!-- MODIFICATION EFFECTUÉE ICI : Ajout de text-center -->
+                <h3 class="text-center text-[15px] sm:text-lg md:text-xl font-heading font-bold text-white mb-2 tracking-normal md:tracking-wide whitespace-nowrap overflow-hidden text-ellipsis sm:whitespace-normal sm:overflow-visible">PNEUS COMMANDÉS SUR PNEUSCOM.CH ?</h3>
+                <p class="text-center text-gray-400 leading-relaxed text-sm md:text-base">
+                    Cliquez sur le bouton vert en bas à droite pour prendre rendez-vous.
+                </p>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Section Services -->
+    <section id="services" class="py-24 bg-brand-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-heading font-black text-white uppercase tracking-tight mb-4 break-words leading-[1.7] md:leading-[1.5]">
+                    <span class="text-brand-red border-b-4 border-brand-red pb-1">Nos</span> Services
+                    
+                </h2>
+                <p class="text-gray-400 text-lg">Une gamme complète pour la santé de vos voitures.</p>
+            </div>
+            
+            <!-- 7 Services Principaux -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                
+                <!-- Service 1 -->
+                <div class="service-card bg-brand-gray border border-gray-800 rounded-xl p-8">
+                    <div class="w-14 h-14 bg-brand-red/10 rounded-lg flex items-center justify-center mb-6 text-brand-red">
+                        <i data-lucide="package" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-white mb-3 uppercase tracking-wide">Vente de pneus</h3>
+                    <p class="text-gray-400 leading-relaxed">Large choix toutes marques et toutes tailles. Les meilleurs pneus adaptés à votre véhicule et à votre budget.</p>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="service-card bg-brand-gray border border-gray-800 rounded-xl p-8">
+                    <div class="w-14 h-14 bg-brand-red/10 rounded-lg flex items-center justify-center mb-6 text-brand-red">
+                        <i data-lucide="settings" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-white mb-3 uppercase tracking-wide">Pose de pneus</h3>
+                    <p class="text-gray-400 leading-relaxed">Démontage et montage réalisés avec un équipement professionnel pour préserver vos jantes.</p>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="service-card bg-brand-gray border border-gray-800 rounded-xl p-8">
+                    <div class="w-14 h-14 bg-brand-red/10 rounded-lg flex items-center justify-center mb-6 text-brand-red">
+                        <i data-lucide="crosshair" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-white mb-3 uppercase tracking-wide">Géométrie</h3>
+                    <p class="text-gray-400 leading-relaxed">Alignement parfait de vos roues pour éviter l'usure prématurée et garantir une tenue de route sûre.</p>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="service-card bg-brand-gray border border-gray-800 rounded-xl p-8">
+                    <div class="w-14 h-14 bg-brand-red/10 rounded-lg flex items-center justify-center mb-6 text-brand-red">
+                        <i data-lucide="battery" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-white mb-3 uppercase tracking-wide">Changement de batterie</h3>
+                    <p class="text-gray-400 leading-relaxed">Test et remplacement de votre batterie défaillante pour un démarrage garanti par tous les temps.</p>
+                </div>
+                
+                <!-- Service 5 -->
+                <div class="service-card bg-brand-gray border border-gray-800 rounded-xl p-8">
+                    <div class="w-14 h-14 bg-brand-red/10 rounded-lg flex items-center justify-center mb-6 text-brand-red">
+                        <i data-lucide="gauge" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-white mb-3 uppercase tracking-wide">Services rapides</h3>
+                    <p class="text-gray-400 leading-relaxed">Interventions express pour l'entretien courant de votre véhicule de manière efficace.</p>
+                </div>
+
+                <!-- Service 6 -->
+                <div class="service-card bg-brand-gray border border-gray-800 rounded-xl p-8">
+                    <div class="w-14 h-14 bg-brand-red/10 rounded-lg flex items-center justify-center mb-6 text-brand-red">
+                        <i data-lucide="activity" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-white mb-3 uppercase tracking-wide">Diagnostics</h3>
+                    <p class="text-gray-400 leading-relaxed">Analyse électronique avancée pour identifier et résoudre rapidement les pannes de votre véhicule.</p>
+                </div>
+
+                <!-- Service 7 (Centré sur la dernière ligne) -->
+                <div class="service-card bg-brand-gray border border-gray-800 rounded-xl p-8 lg:col-start-2 lg:col-end-3">
+                    <div class="w-14 h-14 bg-brand-red/10 rounded-lg flex items-center justify-center mb-6 text-brand-red">
+                        <i data-lucide="disc" class="w-8 h-8"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-white mb-3 uppercase tracking-wide">Jantes</h3>
+                    <p class="text-gray-400 leading-relaxed">Vente, conseil et montage de jantes pour sublimer et équiper parfaitement votre véhicule.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Section "Pourquoi nous choisir" -->
+    <section id="pourquoi-nous" class="py-24 bg-brand-dark border-y border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-heading font-black text-white uppercase tracking-tight break-words leading-[1.7] md:leading-[1.5]">
+                    <span class="text-brand-red border-b-4 border-brand-red pb-1">Pourquoi</span> Nous Choisir ?
+                </h2>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
+                <!-- Argument 1 -->
+                <div class="text-center group">
+                    <div class="w-20 h-20 mx-auto bg-brand-gray border border-gray-700 rounded-full flex items-center justify-center mb-6 text-brand-red group-hover:bg-brand-red group-hover:text-white transition-colors duration-300">
+                        <i data-lucide="zap" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-white mb-3 uppercase">Intervention Rapide</h3>
+                    <p class="text-gray-400">Votre temps est précieux. Nous garantissons des interventions efficaces et ponctuelles, sans longue attente.</p>
+                </div>
+                
+                <!-- Argument 2 -->
+                <div class="text-center group">
+                    <div class="w-20 h-20 mx-auto bg-brand-gray border border-gray-700 rounded-full flex items-center justify-center mb-6 text-brand-red group-hover:bg-brand-red group-hover:text-white transition-colors duration-300">
+                        <i data-lucide="award" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-white mb-3 uppercase">Qualité Garantie</h3>
+                    <p class="text-gray-400">Équipement à la pointe de la technologie et travail soigné réalisé par des professionnels expérimentés.</p>
+                </div>
+                
+                <!-- Argument 3 -->
+                <div class="text-center group">
+                    <div class="w-20 h-20 mx-auto bg-brand-gray border border-gray-700 rounded-full flex items-center justify-center mb-6 text-brand-red group-hover:bg-brand-red group-hover:text-white transition-colors duration-300">
+                        <i data-lucide="shield-check" class="w-10 h-10"></i>
+                    </div>
+                    <h3 class="text-xl font-heading font-bold text-white mb-3 uppercase">Tarifs Transparents</h3>
+                    <p class="text-gray-400">Des conseils honnêtes, aucun frais caché et un devis clair avant chaque intervention sur votre véhicule.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section Contact & Map -->
+    <section id="contact" class="py-24 bg-brand-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                
+                <!-- Infos Contact -->
+                <div>
+                    <h2 class="text-3xl md:text-5xl font-heading font-black text-white uppercase tracking-tight mb-8 break-words leading-[1.7] md:leading-[1.5]">
+                        <span class="text-brand-red border-b-4 border-brand-red pb-1">Contact</span> & Accès
+                    </h2>
+                    <p class="text-gray-400 mb-10 text-lg">Besoin d'un renseignement ou d'un rendez-vous ? Retrouvez-nous directement à Renens ou contactez-nous.</p>
+                    
+                    <div class="space-y-8">
+                        <!-- Adresse -->
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-brand-gray rounded-lg flex items-center justify-center flex-shrink-0 mr-6">
+                                <i data-lucide="map-pin" class="w-6 h-6 text-brand-red"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-heading font-bold text-lg uppercase tracking-wider mb-1">Adresse</h4>
+                                <p class="text-gray-300">Chemin du Closel 16<br>1020 Renens, VD, Suisse</p>
+                                <p class="text-sm text-brand-red mt-1">📍 Dans les locaux de SFA Fournitures Auto</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Téléphone -->
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-brand-gray rounded-lg flex items-center justify-center flex-shrink-0 mr-6">
+                                <i data-lucide="phone" class="w-6 h-6 text-brand-red"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-heading font-bold text-lg uppercase tracking-wider mb-1">Téléphone</h4>
+                                <!-- NOTE: Remplace par le vrai numéro -->
+                                <a href="tel:+41792843905" class="text-gray-300 hover:text-brand-red transition-colors text-lg">+41 79 284 39 05</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Email -->
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 bg-brand-gray rounded-lg flex items-center justify-center flex-shrink-0 mr-6">
+                                <i data-lucide="mail" class="w-6 h-6 text-brand-red"></i>
+                            </div>
+                            <div>
+                                <h4 class="text-white font-heading font-bold text-lg uppercase tracking-wider mb-1">Email</h4>
+                                <!-- NOTE: Remplace par le vrai email -->
+                                <a href="mailto:contact@pneugo.ch" class="text-gray-300 hover:text-brand-red transition-colors text-lg">contact@pneugo.ch</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Google Maps (Style sombre) -->
+                <div class="h-[500px] bg-brand-gray rounded-2xl overflow-hidden shadow-2xl border border-gray-800 relative group">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2745.289197475727!2d6.589885112105315!3d46.521877460838634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c310fb4e5b3cb%3A0x67894a81454558e6!2sChemin%20du%20Closel%2016%2C%201020%20Renens%2C%20Suisse!5e0!3m2!1sfr!2sch!4v1710439391000!5m2!1sfr!2sch" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        class="absolute inset-0 grayscale contrast-125 opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 ease-in-out">
+                    </iframe>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-[#0a0a0a] border-t border-gray-900 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
+                <!-- Colonne 1 -->
+                <div>
+                    <!-- LOGO PneuGo Footer: Agrandi pour correspondre à la navbar -->
+                    <a href="#" class="inline-flex items-center h-[55px] md:h-[85px] mb-8 transition-all duration-300 group">
+                        <img src="./logo.png" alt="Logo PneuGo" class="h-full w-auto object-contain origin-left scale-[1.7] md:scale-[2.2] transition-all duration-300 hover:opacity-80">
+                    </a>
+                    <p class="text-gray-500 text-sm leading-relaxed mt-4">
+                        Votre partenaire de confiance pour l'entretien et le changement de vos pneus à Renens. La sécurité au meilleur prix, toute l'année.
+                    </p>
+                </div>
+                
+                <!-- Colonne 2 -->
+                <div>
+                    <h4 class="text-white font-heading font-bold mb-6 uppercase tracking-widest text-sm">Liens Rapides</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#services" class="text-gray-500 hover:text-brand-red transition-colors">Nos Services</a></li>
+                        <li><a href="https://www.pneuscom.ch" target="_blank" class="text-gray-500 hover:text-brand-red transition-colors">Commander vos pneus en ligne</a></li>
+                        <li><a href="https://calendly.com/contact-pneugo/30" target="_blank" class="text-gray-500 hover:text-brand-red transition-colors">Prendre rendez-vous</a></li>
+                        <li><a href="#contact" class="text-gray-500 hover:text-brand-red transition-colors">Nous contacter</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Colonne 3 -->
+                <div>
+                    <h4 class="text-white font-heading font-bold mb-6 uppercase tracking-widest text-sm">Horaires</h4>
+                    <ul class="space-y-3 text-gray-500 text-sm">
+                        <li class="flex justify-between border-b border-gray-800 pb-2"><span>Lundi - Vendredi</span> <span>07:00 - 18:00</span></li>
+                        <li class="flex justify-between border-b border-gray-800 pb-2"><span>Samedi</span> <span>09:00 - 12:00</span></li>
+                        <li class="flex justify-between text-brand-red pt-1"><span>Dimanche</span> <span>Fermé</span></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- MODIFICATION EFFECTUÉE ICI -->
+            <div class="border-t border-gray-900 pt-8 flex flex-col md:flex-row justify-center items-center gap-2 md:gap-3 text-sm text-gray-600">
+                <p>&copy; 2026 PneuGo. Tous droits réservés.</p>
+                <div class="flex items-center">
+                    Développé par 
+                    <a href="https://novodesign.ch" target="_blank" rel="noopener noreferrer" class="ml-2 px-2 py-1 rounded border border-gray-700 bg-[#1a1a1c] text-gray-300 hover:text-white hover:border-brand-red hover:bg-brand-red transition-all duration-300 font-bold text-xs uppercase tracking-wider">
+                        NOVO.
                     </a>
                 </div>
+            </div>
+            <!-- FIN DE LA MODIFICATION -->
+        </div>
+    </footer>
 
-                <!-- Bouton Menu Mobile -->
-                <button id="mobile-menu-btn" class="md:hidden text-white hover:text-brand-red">
-                    <i data-lucide="menu" class="w-8 h-8"></i>
-                </button>
-            </div>
-        </div>
-    </nav>
+    <!-- Bouton WhatsApp Fixe (NOUVEAU MESSAGE POUR COMMANDE PNEUS) -->
+    <a href="https://wa.me/41792843905?text=Bonjour%20l'%C3%A9quipe%20PneuGo%20!%20%F0%9F%91%8B%0A%0AJe%20viens%20de%20passer%20commande%20sur%20pneuscom.ch%20et%20je%20souhaite%20fixer%20mon%20rendez-vous%20de%20montage%20(livraison%20pr%C3%A9vue%20sous%202%20%C3%A0%204%20jours).%0A%0AVoici%20mes%20informations%20pour%20gagner%20du%20temps%20%3A%0A%F0%9F%93%A6%20Num%C3%A9ro%20de%20commande%20%3A%20%5BOBLIGATOIRE%5D%0A%F0%9F%9A%97%20Marque%20%2F%20Mod%C3%A8le%20du%20v%C3%A9hicule%20%3A%20%5B%C3%80%20compl%C3%A9ter%5D%0A%F0%9F%93%8F%20Dimension%20des%20pneus%20%3A%20%5B%C3%80%20compl%C3%A9ter%5D%0A%F0%9F%93%85%20Jours%2Fheures%20de%20pr%C3%A9f%C3%A9rence%20%3A%20%5B%C3%80%20compl%C3%A9ter%5D%0A%0AMerci%20!" target="_blank" class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-[0_4px_20px_rgba(37,211,102,0.4)] hover:scale-110 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center" aria-label="Contactez-nous sur WhatsApp">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-8 h-8 fill-current">
+            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+        </svg>
+    </a>
 
-    <!-- Menu Mobile (Caché par défaut) -->
-    <div id="mobile-menu" class="fixed inset-0 bg-brand-dark z-50 transform translate-x-full transition-transform duration-300 flex flex-col pt-24 px-6 md:hidden">
-        <button id="mobile-close-btn" class="absolute top-6 right-6 text-white hover:text-brand-red">
-            <i data-lucide="x" class="w-8 h-8"></i>
-        </button>
-        <div class="flex flex-col space-y-6 text-center">
-            <a href="#services" class="text-xl font-heading font-bold uppercase hover:text-brand-red">Nos Services</a>
-            <a href="#pourquoi-nous" class="text-xl font-heading font-bold uppercase hover:text-brand-red">Pourquoi Nous</a>
-            <a href="#contact" class="text-xl font-heading font-bold uppercase hover:text-brand-red">Contact</a>
-            <hr class="border-gray-800">
-            <a href="https://www.pneuscom.ch" target="_blank" class="px-6 py-4 bg-brand-red text-white font-bold rounded uppercase">Commander vos pneus</a>
-            <a href="https://calendly.com/contact-pneugo/30" target="_blank" class="px-6 py-4 border-2 border-brand-red text-brand-red font-bold rounded uppercase">Prendre Rendez-vous</a>
-        </div>
-    </div>
+    <!-- DEBUT JS -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialisation des icônes Lucide (Vérification de sécurité ajoutée)
+            if (typeof lucide !== 'undefined') {
+                lucide.createIcons();
+            }
 
-    <!-- Hero Banner -->
-    <section class="relative pt-16 pb-32 lg:pt-48 lg:pb-32 bg-asphalt min-h-screen flex items-center overflow-hidden w-full">
-        <!-- Lueur décorative rouge -->
-        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-brand-red/10 rounded-full blur-[100px] pointer-events-none"></div>
-        
-        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 w-full">
-            <h1 class="text-4xl md:text-5xl lg:text-7xl font-heading font-black text-white uppercase tracking-tight mb-6 drop-shadow-lg break-words">
-                L'Expertise pneumatique <br class="hidden md:block" />
-                <span class="text-brand-red">Sans Compromis</span>
-            </h1>
-            <p class="mt-4 text-lg md:text-2xl text-gray-300 max-w-3xl mx-auto mb-10 font-medium drop-shadow-md">
-                Votre partenaire de confiance à Renens pour rouler en toute sécurité, été comme hiver.
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
-                <!-- BOUTON 1 : COMMANDER -->
-                <a href="https://www.pneuscom.ch" target="_blank" class="inline-flex items-center justify-center px-8 py-4 text-sm md:text-base font-bold text-white bg-brand-red rounded hover:bg-red-700 hover:scale-105 transition-all uppercase tracking-wide">
-                    <i data-lucide="shopping-cart" class="w-5 h-5 mr-2"></i>
-                    Commander vos pneus
-                </a>
-                <!-- BOUTON 2 : RENDEZ-VOUS -->
-                <a href="https://calendly.com/contact-pneugo/30" target="_blank" class="inline-flex items-center justify-center px-8 py-4 text-sm md:text-base font-bold text-white bg-brand-dark/50 backdrop-blur-sm border-2 border-brand-red rounded hover:bg-brand-red hover:text-white hover:scale-105 transition-all uppercase tracking-wide">
-                    <i data-lucide="calendar" class="w-5 h-5 mr-2"></i>
-                    Prendre rendez-vous
-                </a>
-            </div>
+            // Gestion du Menu Mobile
+            const mobileBtn = document.getElementById('mobile-menu-btn');
+            const mobileCloseBtn = document.getElementById('mobile-close-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            if (mobileBtn && mobileMenu) {
+                mobileBtn.addEventListener('click', () => {
+                    mobileMenu.classList.remove('translate-x-full');
+                });
+            }
+            
+            if (mobileCloseBtn && mobileMenu) {
+                mobileCloseBtn.addEventListener('click', () => {
+                    mobileMenu.classList.add('translate-x-full');
+                });
+            }
+            
+            // Fermer le menu mobile lors d'un clic sur un lien
+            document.querySelectorAll('#mobile-menu a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (mobileMenu) mobileMenu.classList.add('translate-x-full');
+                });
+            });
 
-            <!-- BOITE INFO PNEUSCOM (DESIGN TYPE CARTE SERVICE) -->
-            <div class="mt-10 max-w-2xl mx-auto bg-brand-gray border border-gray-800 rounded-xl p-6 md:p-8 text-left shadow-lg relative">
-                
-                <!-- Ligne 1 : Bouton (i) + Flèche + Texte indicatif -->
-                <div class="flex items-center mb-6">
-                    <!-- Conteneur du bouton (i) -->
-                    <div class="relative">
-                        <button id="info-toggle-btn" class="w-14 h-14 bg-brand-red/10 hover:bg-brand-red/20 transition-colors cursor-pointer rounded-lg flex items-center justify-center flex-shrink-0 text-brand-red relative z-10">
-                            <i data-lucide="info" class="w-8 h-8 pointer-events-none"></i>
-                        </button>
-                        
-                        <!-- La bulle cachée -->
-                        <div id="info-bubble" class="hidden absolute top-full left-0 mt-3 w-72 md:w-80 bg-[#1a1a1c] border border-gray-700 rounded-xl p-5 shadow-2xl z-50 opacity-0 transition-opacity duration-300">
-                            <!-- Flèche directionnelle de la bulle -->
-                            <div class="absolute -top-2 left-6 w-4 h-4 bg-[#1a1a1c] border-t border-l border-gray-700 transform rotate-45"></div>
-                            <p class="text-gray-300 text-sm leading-relaxed relative z-10">
-                                Le délai de livraison étant de 2 à 4 jours, merci de fixer votre rendez-vous de montage <strong class="text-brand-red">directement via WhatsApp</strong> en bas de page. Munissez-vous de votre numéro de commande.<br><br>L'agenda classique est réservé à nos autres services.
-                            </p>
-                        </div>
-                    </div>
+            // Gestion de la Navbar Sticky
+            window.addEventListener('scroll', () => {
+                const nav = document.getElementById('navbar');
+                const logoLink = document.getElementById('nav-logo-link');
+                const logoImg = document.getElementById('nav-logo-img');
+                
+                if (!nav || !logoLink || !logoImg) return;
 
-                    <!-- Flèche et texte à droite du bouton (i) -->
-                    <div class="flex items-center ml-4 text-gray-400 italic text-sm md:text-base">
-                        <i data-lucide="arrow-left" class="w-5 h-5 mr-2 text-brand-red"></i>
-                        <span>Cliquez ici pour avoir plus d'infos !</span>
-                    </div>
-                </div>
+                if (window.scrollY > 20) {
+                    nav.classList.add('bg-brand-dark/95', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-gray-800', 'py-2');
+                    nav.classList.remove('bg-transparent', 'py-4', 'lg:py-5');
+                    
+                    logoLink.classList.remove('h-[50px]', 'md:h-[75px]');
+                    logoLink.classList.add('h-[35px]', 'md:h-[50px]');
+                    
+                    logoImg.classList.remove('scale-[1.7]', 'md:scale-[2.2]');
+                    logoImg.classList.add('scale-[1.4]', 'md:scale-[1.7]');
+                } else {
+                    nav.classList.remove('bg-brand-dark/95', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-gray-800', 'py-2');
+                    nav.classList.add('bg-transparent', 'py-4', 'lg:py-5');
+                    
+                    logoLink.classList.remove('h-[35px]', 'md:h-[50px]');
+                    logoLink.classList.add('h-[50px]', 'md:h-[75px]');
+                    
+                    logoImg.classList.remove('scale-[1.4]', 'md:scale-[1.7]');
+                    logoImg.classList.add('scale-[1.7]', 'md:scale-[2.2]');
+                }
+            });
 
-                <!-- Ligne 2 : Texte principal (Titre et description) -->
-                <!-- MODIFICATION EFFECTUÉE ICI : Ajout de text-center -->
-                <h3 class="text-center text-[15px] sm:text-lg md:text-xl font-heading font-bold text-white mb-2 tracking-normal md:tracking-wide whitespace-nowrap overflow-hidden text-ellipsis sm:whitespace-normal sm:overflow-visible">PNEUS COMMANDÉS SUR PNEUSCOM.CH ?</h3>
-                <p class="text-center text-gray-400 leading-relaxed text-sm md:text-base">
-                    Cliquez sur le bouton vert en bas à droite pour prendre rendez-vous.
-                </p>
+            // Gestion du défilement fluide SANS changer l'URL
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    
+                    if (targetId === '#') {
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    } else {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            targetElement.scrollIntoView({
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                });
+            });
 
-            </div>
+            // GESTION DE LA BULLE D'INFORMATION (i) - Sécurisée
+            const infoBtn = document.getElementById('info-toggle-btn');
+            const infoBubble = document.getElementById('info-bubble');
 
-        </div>
-    </section>
+            if (infoBtn && infoBubble) {
+                infoBtn.addEventListener('click', (e) => {
+                    e.stopPropagation(); 
+                    
+                    if (infoBubble.classList.contains('hidden')) {
+                        // Afficher
+                        infoBubble.classList.remove('hidden');
+                        setTimeout(() => {
+                            infoBubble.classList.remove('opacity-0');
+                            infoBubble.classList.add('opacity-100');
+                        }, 10);
+                    } else {
+                        // Cacher
+                        infoBubble.classList.remove('opacity-100');
+                        infoBubble.classList.add('opacity-0');
+                        setTimeout(() => {
+                            infoBubble.classList.add('hidden');
+                        }, 300);
+                    }
+                });
 
-    <!-- Section Services -->
-    <section id="services" class="py-24 bg-brand-dark">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-heading font-black text-white uppercase tracking-tight mb-4 break-words leading-[1.7] md:leading-[1.5]">
-                    <span class="text-brand-red border-b-4 border-brand-red pb-1">Nos</span> Services
-                </h2>
-                <p class="text-gray-400 text-lg">Une gamme complète pour la santé de vos voitures.</p>
-            </div>
-            
-            <!-- 7 Services Principaux -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-                
-                <!-- Service 1 -->
-                <div class="service-card bg-brand-gray border border-gray-800 rounded-xl p-8">
-                    <div class="w-14 h-14 bg-brand-red/10 rounded-lg flex items-center justify-center mb-6 text-brand-red">
-                        <i data-lucide="package" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-xl font-heading font-bold text-white mb-3 uppercase tracking-wide">Vente de pneus</h3>
-                    <p class="text-gray-400 leading-relaxed">Large choix toutes marques et toutes tailles. Les meilleurs pneus adaptés à votre véhicule et à votre budget.</p>
-                </div>
-                
-                <!-- Service 2 -->
-                <div class="service-card bg-brand-gray border border-gray-800 rounded-xl p-8">
-                    <div class="w-14 h-14 bg-brand-red/10 rounded-lg flex items-center justify-center mb-6 text-brand-red">
-                        <i data-lucide="settings" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-xl font-heading font-bold text-white mb-3 uppercase tracking-wide">Pose de pneus</h3>
-                    <p class="text-gray-400 leading-relaxed">Démontage et montage réalisés avec un équipement professionnel pour préserver vos jantes.</p>
-                </div>
-                
-                <!-- Service 3 -->
-                <div class="service-card bg-brand-gray border border-gray-800 rounded-xl p-8">
-                    <div class="w-14 h-14 bg-brand-red/10 rounded-lg flex items-center justify-center mb-6 text-brand-red">
-                        <i data-lucide="crosshair" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-xl font-heading font-bold text-white mb-3 uppercase tracking-wide">Géométrie</h3>
-                    <p class="text-gray-400 leading-relaxed">Alignement parfait de vos roues pour éviter l'usure prématurée et garantir une tenue de route sûre.</p>
-                </div>
-                
-                <!-- Service 4 -->
-                <div class="service-card bg-brand-gray border border-gray-800 rounded-xl p-8">
-                    <div class="w-14 h-14 bg-brand-red/10 rounded-lg flex items-center justify-center mb-6 text-brand-red">
-                        <i data-lucide="battery" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-xl font-heading font-bold text-white mb-3 uppercase tracking-wide">Changement de batterie</h3>
-                    <p class="text-gray-400 leading-relaxed">Test et remplacement de votre batterie défaillante pour un démarrage garanti par tous les temps.</p>
-                </div>
-                
-                <!-- Service 5 -->
-                <div class="service-card bg-brand-gray border border-gray-800 rounded-xl p-8">
-                    <div class="w-14 h-14 bg-brand-red/10 rounded-lg flex items-center justify-center mb-6 text-brand-red">
-                        <i data-lucide="gauge" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-xl font-heading font-bold text-white mb-3 uppercase tracking-wide">Services rapides</h3>
-                    <p class="text-gray-400 leading-relaxed">Interventions express pour l'entretien courant de votre véhicule de manière efficace.</p>
-                </div>
-
-                <!-- Service 6 -->
-                <div class="service-card bg-brand-gray border border-gray-800 rounded-xl p-8">
-                    <div class="w-14 h-14 bg-brand-red/10 rounded-lg flex items-center justify-center mb-6 text-brand-red">
-                        <i data-lucide="activity" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-xl font-heading font-bold text-white mb-3 uppercase tracking-wide">Diagnostics</h3>
-                    <p class="text-gray-400 leading-relaxed">Analyse électronique avancée pour identifier et résoudre rapidement les pannes de votre véhicule.</p>
-                </div>
-
-                <!-- Service 7 (Centré sur la dernière ligne) -->
-                <div class="service-card bg-brand-gray border border-gray-800 rounded-xl p-8 lg:col-start-2 lg:col-end-3">
-                    <div class="w-14 h-14 bg-brand-red/10 rounded-lg flex items-center justify-center mb-6 text-brand-red">
-                        <i data-lucide="disc" class="w-8 h-8"></i>
-                    </div>
-                    <h3 class="text-xl font-heading font-bold text-white mb-3 uppercase tracking-wide">Jantes</h3>
-                    <p class="text-gray-400 leading-relaxed">Vente, conseil et montage de jantes pour sublimer et équiper parfaitement votre véhicule.</p>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Section "Pourquoi nous choisir" -->
-    <section id="pourquoi-nous" class="py-24 bg-brand-dark border-y border-gray-800">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-5xl font-heading font-black text-white uppercase tracking-tight break-words leading-[1.7] md:leading-[1.5]">
-                    <span class="text-brand-red border-b-4 border-brand-red pb-1">Pourquoi</span> Nous Choisir ?
-                </h2>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12">
-                <!-- Argument 1 -->
-                <div class="text-center group">
-                    <div class="w-20 h-20 mx-auto bg-brand-gray border border-gray-700 rounded-full flex items-center justify-center mb-6 text-brand-red group-hover:bg-brand-red group-hover:text-white transition-colors duration-300">
-                        <i data-lucide="zap" class="w-10 h-10"></i>
-                    </div>
-                    <h3 class="text-xl font-heading font-bold text-white mb-3 uppercase">Intervention Rapide</h3>
-                    <p class="text-gray-400">Votre temps est précieux. Nous garantissons des interventions efficaces et ponctuelles, sans longue attente.</p>
-                </div>
-                
-                <!-- Argument 2 -->
-                <div class="text-center group">
-                    <div class="w-20 h-20 mx-auto bg-brand-gray border border-gray-700 rounded-full flex items-center justify-center mb-6 text-brand-red group-hover:bg-brand-red group-hover:text-white transition-colors duration-300">
-                        <i data-lucide="award" class="w-10 h-10"></i>
-                    </div>
-                    <h3 class="text-xl font-heading font-bold text-white mb-3 uppercase">Qualité Garantie</h3>
-                    <p class="text-gray-400">Équipement à la pointe de la technologie et travail soigné réalisé par des professionnels expérimentés.</p>
-                </div>
-                
-                <!-- Argument 3 -->
-                <div class="text-center group">
-                    <div class="w-20 h-20 mx-auto bg-brand-gray border border-gray-700 rounded-full flex items-center justify-center mb-6 text-brand-red group-hover:bg-brand-red group-hover:text-white transition-colors duration-300">
-                        <i data-lucide="shield-check" class="w-10 h-10"></i>
-                    </div>
-                    <h3 class="text-xl font-heading font-bold text-white mb-3 uppercase">Tarifs Transparents</h3>
-                    <p class="text-gray-400">Des conseils honnêtes, aucun frais caché et un devis clair avant chaque intervention sur votre véhicule.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Section Contact & Map -->
-    <section id="contact" class="py-24 bg-brand-dark">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-                
-                <!-- Infos Contact -->
-                <div>
-                    <h2 class="text-3xl md:text-5xl font-heading font-black text-white uppercase tracking-tight mb-8 break-words leading-[1.7] md:leading-[1.5]">
-                        <span class="text-brand-red border-b-4 border-brand-red pb-1">Contact</span> & Accès
-                    </h2>
-                    <p class="text-gray-400 mb-10 text-lg">Besoin d'un renseignement ou d'un rendez-vous ? Retrouvez-nous directement à Renens ou contactez-nous.</p>
-                    
-                    <div class="space-y-8">
-                        <!-- Adresse -->
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 bg-brand-gray rounded-lg flex items-center justify-center flex-shrink-0 mr-6">
-                                <i data-lucide="map-pin" class="w-6 h-6 text-brand-red"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-white font-heading font-bold text-lg uppercase tracking-wider mb-1">Adresse</h4>
-                                <p class="text-gray-300">Chemin du Closel 16<br>1020 Renens, VD, Suisse</p>
-                                <p class="text-sm text-brand-red mt-1">📍 Dans les locaux de SFA Fournitures Auto</p>
-                            </div>
-                        </div>
-                        
-                        <!-- Téléphone -->
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 bg-brand-gray rounded-lg flex items-center justify-center flex-shrink-0 mr-6">
-                                <i data-lucide="phone" class="w-6 h-6 text-brand-red"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-white font-heading font-bold text-lg uppercase tracking-wider mb-1">Téléphone</h4>
-                                <!-- NOTE: Remplace par le vrai numéro -->
-                                <a href="tel:+41792843905" class="text-gray-300 hover:text-brand-red transition-colors text-lg">+41 79 284 39 05</a>
-                            </div>
-                        </div>
-                        
-                        <!-- Email -->
-                        <div class="flex items-start">
-                            <div class="w-12 h-12 bg-brand-gray rounded-lg flex items-center justify-center flex-shrink-0 mr-6">
-                                <i data-lucide="mail" class="w-6 h-6 text-brand-red"></i>
-                            </div>
-                            <div>
-                                <h4 class="text-white font-heading font-bold text-lg uppercase tracking-wider mb-1">Email</h4>
-                                <!-- NOTE: Remplace par le vrai email -->
-                                <a href="mailto:contact@pneugo.ch" class="text-gray-300 hover:text-brand-red transition-colors text-lg">contact@pneugo.ch</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Google Maps (Style sombre) -->
-                <div class="h-[500px] bg-brand-gray rounded-2xl overflow-hidden shadow-2xl border border-gray-800 relative group">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2745.289197475727!2d6.589885112105315!3d46.521877460838634!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c310fb4e5b3cb%3A0x67894a81454558e6!2sChemin%20du%20Closel%2016%2C%201020%20Renens%2C%20Suisse!5e0!3m2!1sfr!2sch!4v1710439391000!5m2!1sfr!2sch" 
-                        width="100%" 
-                        height="100%" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade"
-                        class="absolute inset-0 grayscale contrast-125 opacity-70 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700 ease-in-out">
-                    </iframe>
-                </div>
-                
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="bg-[#0a0a0a] border-t border-gray-900 pt-16 pb-8">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-12">
-                <!-- Colonne 1 -->
-                <div>
-                    <!-- LOGO PneuGo Footer: Agrandi pour correspondre à la navbar -->
-                    <a href="#" class="inline-flex items-center h-[55px] md:h-[85px] mb-8 transition-all duration-300 group">
-                        <img src="./logo.png" alt="Logo PneuGo" class="h-full w-auto object-contain origin-left scale-[1.7] md:scale-[2.2] transition-all duration-300 hover:opacity-80">
-                    </a>
-                    <p class="text-gray-500 text-sm leading-relaxed mt-4">
-                        Votre partenaire de confiance pour l'entretien et le changement de vos pneus à Renens. La sécurité au meilleur prix, toute l'année.
-                    </p>
-                </div>
-                
-                <!-- Colonne 2 -->
-                <div>
-                    <h4 class="text-white font-heading font-bold mb-6 uppercase tracking-widest text-sm">Liens Rapides</h4>
-                    <ul class="space-y-3">
-                        <li><a href="#services" class="text-gray-500 hover:text-brand-red transition-colors">Nos Services</a></li>
-                        <li><a href="https://www.pneuscom.ch" target="_blank" class="text-gray-500 hover:text-brand-red transition-colors">Commander vos pneus en ligne</a></li>
-                        <li><a href="https://calendly.com/contact-pneugo/30" target="_blank" class="text-gray-500 hover:text-brand-red transition-colors">Prendre rendez-vous</a></li>
-                        <li><a href="#contact" class="text-gray-500 hover:text-brand-red transition-colors">Nous contacter</a></li>
-                    </ul>
-                </div>
-                
-                <!-- Colonne 3 -->
-                <div>
-                    <h4 class="text-white font-heading font-bold mb-6 uppercase tracking-widest text-sm">Horaires</h4>
-                    <ul class="space-y-3 text-gray-500 text-sm">
-                        <li class="flex justify-between border-b border-gray-800 pb-2"><span>Lundi - Vendredi</span> <span>07:00 - 18:00</span></li>
-                        <li class="flex justify-between border-b border-gray-800 pb-2"><span>Samedi</span> <span>09:00 - 12:00</span></li>
-                        <li class="flex justify-between text-brand-red pt-1"><span>Dimanche</span> <span>Fermé</span></li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="border-t border-gray-900 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-gray-600">
-                <p>&copy; 2026 PneuGo. Tous droits réservés.</p>
-                <p class="mt-2 md:mt-0">- Développé par NOVO.</p>
-            </div>
-        </div>
-    </footer>
-
-    <!-- Bouton WhatsApp Fixe (NOUVEAU MESSAGE POUR COMMANDE PNEUS) -->
-    <a href="https://wa.me/41792843905?text=Bonjour%20l'%C3%A9quipe%20PneuGo%20!%20%F0%9F%91%8B%0A%0AJe%20viens%20de%20passer%20commande%20sur%20pneuscom.ch%20et%20je%20souhaite%20fixer%20mon%20rendez-vous%20de%20montage%20(livraison%20pr%C3%A9vue%20sous%202%20%C3%A0%204%20jours).%0A%0AVoici%20mes%20informations%20pour%20gagner%20du%20temps%20%3A%0A%F0%9F%93%A6%20Num%C3%A9ro%20de%20commande%20%3A%20%5BOBLIGATOIRE%5D%0A%F0%9F%9A%97%20Marque%20%2F%20Mod%C3%A8le%20du%20v%C3%A9hicule%20%3A%20%5B%C3%80%20compl%C3%A9ter%5D%0A%F0%9F%93%8F%20Dimension%20des%20pneus%20%3A%20%5B%C3%80%20compl%C3%A9ter%5D%0A%F0%9F%93%85%20Jours%2Fheures%20de%20pr%C3%A9f%C3%A9rence%20%3A%20%5B%C3%80%20compl%C3%A9ter%5D%0A%0AMerci%20!" target="_blank" class="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-[0_4px_20px_rgba(37,211,102,0.4)] hover:scale-110 hover:-translate-y-1 transition-all duration-300 flex items-center justify-center" aria-label="Contactez-nous sur WhatsApp">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="w-8 h-8 fill-current">
-            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7 .9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
-        </svg>
-    </a>
-
-    <!-- DEBUT JS -->
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Initialisation des icônes Lucide (Vérification de sécurité ajoutée)
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            }
-
-            // Gestion du Menu Mobile
-            const mobileBtn = document.getElementById('mobile-menu-btn');
-            const mobileCloseBtn = document.getElementById('mobile-close-btn');
-            const mobileMenu = document.getElementById('mobile-menu');
-            
-            if (mobileBtn && mobileMenu) {
-                mobileBtn.addEventListener('click', () => {
-                    mobileMenu.classList.remove('translate-x-full');
-                });
-            }
-            
-            if (mobileCloseBtn && mobileMenu) {
-                mobileCloseBtn.addEventListener('click', () => {
-                    mobileMenu.classList.add('translate-x-full');
-                });
-            }
-            
-            // Fermer le menu mobile lors d'un clic sur un lien
-            document.querySelectorAll('#mobile-menu a').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (mobileMenu) mobileMenu.classList.add('translate-x-full');
-                });
-            });
-
-            // Gestion de la Navbar Sticky
-            window.addEventListener('scroll', () => {
-                const nav = document.getElementById('navbar');
-                const logoLink = document.getElementById('nav-logo-link');
-                const logoImg = document.getElementById('nav-logo-img');
-                
-                if (!nav || !logoLink || !logoImg) return;
-
-                if (window.scrollY > 20) {
-                    nav.classList.add('bg-brand-dark/95', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-gray-800', 'py-2');
-                    nav.classList.remove('bg-transparent', 'py-4', 'lg:py-5');
-                    
-                    logoLink.classList.remove('h-[50px]', 'md:h-[75px]');
-                    logoLink.classList.add('h-[35px]', 'md:h-[50px]');
-                    
-                    logoImg.classList.remove('scale-[1.7]', 'md:scale-[2.2]');
-                    logoImg.classList.add('scale-[1.4]', 'md:scale-[1.7]');
-                } else {
-                    nav.classList.remove('bg-brand-dark/95', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-gray-800', 'py-2');
-                    nav.classList.add('bg-transparent', 'py-4', 'lg:py-5');
-                    
-                    logoLink.classList.remove('h-[35px]', 'md:h-[50px]');
-                    logoLink.classList.add('h-[50px]', 'md:h-[75px]');
-                    
-                    logoImg.classList.remove('scale-[1.4]', 'md:scale-[1.7]');
-                    logoImg.classList.add('scale-[1.7]', 'md:scale-[2.2]');
-                }
-            });
-
-            // Gestion du défilement fluide SANS changer l'URL
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    
-                    const targetId = this.getAttribute('href');
-                    
-                    if (targetId === '#') {
-                        window.scrollTo({
-                            top: 0,
-                            behavior: 'smooth'
-                        });
-                    } else {
-                        const targetElement = document.querySelector(targetId);
-                        if (targetElement) {
-                            targetElement.scrollIntoView({
-                                behavior: 'smooth'
-                            });
-                        }
-                    }
-                });
-            });
-
-            // GESTION DE LA BULLE D'INFORMATION (i) - Sécurisée
-            const infoBtn = document.getElementById('info-toggle-btn');
-            const infoBubble = document.getElementById('info-bubble');
-
-            if (infoBtn && infoBubble) {
-                infoBtn.addEventListener('click', (e) => {
-                    e.stopPropagation(); 
-                    
-                    if (infoBubble.classList.contains('hidden')) {
-                        // Afficher
-                        infoBubble.classList.remove('hidden');
-                        setTimeout(() => {
-                            infoBubble.classList.remove('opacity-0');
-                            infoBubble.classList.add('opacity-100');
-                        }, 10);
-                    } else {
-                        // Cacher
-                        infoBubble.classList.remove('opacity-100');
-                        infoBubble.classList.add('opacity-0');
-                        setTimeout(() => {
-                            infoBubble.classList.add('hidden');
-                        }, 300);
-                    }
-                });
-
-                // Fermer la bulle si on clique ailleurs
-                document.addEventListener('click', (e) => {
-                    if (!infoBubble.classList.contains('hidden') && !infoBubble.contains(e.target) && e.target !== infoBtn) {
-                        infoBubble.classList.remove('opacity-100');
-                        infoBubble.classList.add('opacity-0');
-                        setTimeout(() => {
-                            infoBubble.classList.add('hidden');
-                        }, 300);
-                    }
-                });
-            }
-        });
-    </script>
+                // Fermer la bulle si on clique ailleurs
+                document.addEventListener('click', (e) => {
+                    if (!infoBubble.classList.contains('hidden') && !infoBubble.contains(e.target) && e.target !== infoBtn) {
+                        infoBubble.classList.remove('opacity-100');
+                        infoBubble.classList.add('opacity-0');
+                        setTimeout(() => {
+                            infoBubble.classList.add('hidden');
+                        }, 300);
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
-
-
